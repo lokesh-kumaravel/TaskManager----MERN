@@ -1,0 +1,353 @@
+/* .image-column-item {
+  position: relative;
+  background: rgba(236, 236, 238, 1);
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  width: 354px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+}
+.image-column-items {
+  position: relative;
+  background: rgba(236, 236, 238, 1);
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  width: 354px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+} */
+
+/* Style for individual blocks inside image-column-item */
+.block-1,
+.block-2,
+.block-3 {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.block-1 img,
+.block-2 img,
+.block-3 img {
+  width: 100%;
+  max-width: 250px; /* Adjust max-width based on your design */
+  height: auto;
+}
+
+.block-1 p,
+.block-2 p,
+.block-3 p {
+  text-align: center;
+  font-size: 14px;
+  color: #5a5a5a;
+  line-height: 1.5;
+}
+
+.search-text {
+  color: #5a5a5a;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.64;
+  text-align: left;
+  width: 100%; /* Ensures the input takes full width */
+  height: 32px; /* Adjust height as needed */
+  padding-left: 10px; /* Padding inside the input */
+  border: none; /* Removes the border */
+  outline: none; /* Removes the outline when the input is focused */
+  background-color: transparent; /* Optionally make background transparent if no background */
+}
+
+.search-text::placeholder {
+  color: #5a5a5a;
+  opacity: 0.64;
+}
+/* Container for the entire home screen */
+.home-container {
+  position: absolute;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 1);
+  height: calc(100vh - 21px - 21px);
+  width: calc(100% - 21px - 21px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 54px;
+  padding: 50px 21px 18px 21px;
+}
+
+/* Frame that wraps search and filter box */
+.home-frame {
+  position: relative;
+  background: rgba(236, 237, 238, 1);
+  border-radius: 20px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  width: calc(100% - 40px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Search box container */
+.search-box {
+  position: relative;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 22px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  height: 24px;
+  width: 284px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 12px;
+}
+
+/* Row within the search box */
+.search-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Icon inside the search box */
+.search-icon {
+  position: relative;
+  overflow: hidden;
+  height: 20px;
+  width: 20px;
+}
+
+.search-text {
+  color: #5a5a5a;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.64;
+  text-align: left;
+  width: 256px;
+  height: 18px;
+}
+
+/* Filter box container */
+.filter-box {
+  position: relative;
+  height: 39px;
+  width: 107px;
+}
+
+.filter-frame {
+  position: absolute;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #615e6d;
+  border-radius: 5px;
+  height: 17px;
+  width: 85px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+/* Filter icon and text */
+.filter-icon {
+  position: relative;
+  height: 16px;
+  width: 16px;
+}
+
+.filter-text {
+  color: #797979;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: left;
+  height: 19px;
+  width: 39px;
+}
+
+.arrow-down {
+  position: relative;
+  height: 16px;
+  width: 16px;
+}
+
+/* Image grid container */
+/* Main image grid container */
+.image-grid {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 54px;
+  flex-wrap: wrap;
+
+  /* Add vertical scrolling when the content exceeds the viewport */
+  max-height: 100vh; /* Adjust based on the height you want to limit to */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+
+/* Image column and item */
+.image-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: auto;
+  width: 354px;
+
+  /* max-height: 100vh;
+  overflow-y: auto;   */
+}
+
+.outer-div {
+  background-color: rgba(236, 236, 238, 1); /* Set the background color */
+  padding: 20px; /* Optional: Add padding if needed */
+  border-radius: 10px;
+}
+
+.image-column-item {
+  position: relative;
+  background: rgba(236, 236, 238, 1);
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  column-gap: 9px;
+  row-gap: 19px;
+  padding: 20px 0;
+}
+.image-column-items {
+  position: relative;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%; /* Takes up full width of the column */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  column-gap: 9px;
+  row-gap: 19px;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .image-grid {
+    /* flex-direction: column; Stack the image columns vertically on smaller screens */
+    gap: 30px; /* Reduce gap between columns when stacked */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-column {
+    width: 100%; /* Take full width on smaller screens */
+    height: auto;
+    /* Allow height to adjust based on content */
+  }
+
+  .image-column-item {
+    width: 100%; /* Take full width of the column */
+    padding: 10px; /* Reduce padding to adjust content spacing */
+  }
+  .image-column-items {
+    width: 100%; /* Take full width of the column */
+    padding: 10px; /* Reduce padding to adjust content spacing */
+  }
+}
+
+@media (min-width: 768px) {
+  .image-grid {
+    flex-direction: row; /* Stack the image columns vertically on smaller screens */
+    /* gap: 30px; */
+    /* Reduce gap between columns when stacked */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+}
+
+@media (max-width: 768px) {
+  .outer-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Add your other styles here as needed */
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.add-task-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-task-btn:hover {
+  background-color: #218838;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
