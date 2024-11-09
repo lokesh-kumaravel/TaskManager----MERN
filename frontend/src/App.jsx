@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Frame3 from "./components/Frame3.jsx";
-import AddTaskSuccess from "./components/AddTaskSuccess.jsx";
-import Calendar from "./components/Calendar.jsx";
-import TodoVariant3 from "./components/TodoVariant3.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import { CommonProvider } from "./components/CommonContext.jsx";
+// import Todo from "./components/Todo.jsx";
+import Register from "./components/Register.jsx";
 import Todo from "./components/Todo.jsx";
+import OnProgress from "./components/OnProgress.jsx";
+import Done from "./components/Done.jsx";
 
 const App = () => {
   return (
@@ -16,10 +16,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/AddTaskSuccess" element={<AddTaskSuccess />} />
-          <Route path="/Calendar" element={<Calendar />} />
-          <Route path="/TodoVariant3" element={<TodoVariant3 />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/onprogress" element={<OnProgress />} />
+          <Route path="/done" element={<Done />} />
         </Routes>
       </Router>
     </CommonProvider>

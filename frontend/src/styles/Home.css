@@ -117,6 +117,7 @@
 }
 
 /* Search box container */
+/* Styles for the search box */
 .search-box {
   position: relative;
   background: rgba(255, 255, 255, 1);
@@ -137,6 +138,18 @@
   align-items: center;
   gap: 8px;
 }
+
+/* Search input box */
+.search-text {
+  border: none; /* Remove the default border */
+  outline: none; /* Remove the default outline (focus border) */
+  background: transparent; /* Keep the background transparent */
+  width: 100%; /* Full width of the parent */
+  font-size: 14px;
+  padding: 5px;
+  color: #000000; /* Set the text color to dark (or any color you prefer) */
+}
+
 
 /* Icon inside the search box */
 .search-icon {
@@ -160,21 +173,44 @@
 /* Filter box container */
 .filter-box {
   position: relative;
-  height: 39px;
-  width: 107px;
 }
 
 .filter-frame {
-  position: absolute;
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid #615e6d;
-  border-radius: 5px;
-  height: 17px;
-  width: 85px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  cursor: pointer;
+}
+
+.filter-dropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  top: 35px; /* Adjust based on the position */
+  width: 150px;
+  z-index: 10;
+}
+
+.filter-box:hover .filter-dropdown {
+  display: block;
+}
+
+.filter-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-dropdown li {
   padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter-dropdown li:hover {
+  background-color: #f0f0f0;
 }
 
 /* Filter icon and text */
@@ -227,8 +263,8 @@
   height: auto;
   width: 354px;
 
-  /* max-height: 100vh;
-  overflow-y: auto;   */
+  max-height: 100vh;
+  overflow-y: auto;  
 }
 
 .outer-div {

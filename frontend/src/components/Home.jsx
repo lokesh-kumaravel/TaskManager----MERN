@@ -14,17 +14,68 @@ import Done from "./Done";
 
 const Home = () => {
   const [description, setDescription] = useState("");
-
-  const { tasks, loading, error, setUser, getTasks } = useCommonContext();
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [taskInput, setTaskInput] = useState(false);
-  const handleAddTask = (event) => {
-    setIsPopupVisible(true);
-    setTimeout(() => {
-      setIsPopupVisible(false);
-    }, 3000);
-    toggleModal(event);
+  const handleNavigate = (path) => {
+    navigate(path); // Navigate to the specified path
   };
+  const {
+    tasks,
+    loading,
+    error,
+    setUser,
+    getTasks,
+    addTask,
+    overdueCount,
+    completedCount,
+    activeCount,
+  } = useCommonContext();
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [taskInput, setTaskInput] = useState("");
+  const handleAddTask = async (event) => {
+    event.preventDefault(); // Prevent the form from submitting or the default action
+
+    // Debugging: log the values to see if they are correct
+    // console.log("Task Title:", taskInput);
+    // console.log("Description:", description);
+    // console.log("Priority:", priority);
+    // console.log("Selected Date:", selectedDate);
+
+    // Check if all necessary fields are filled
+    if (
+      taskInput &&
+      description &&
+      priority !== "Select Priority" &&
+      selectedDate
+    ) {
+      console.log("All fields are valid. Proceeding with task creation.");
+
+      // Create the new task object
+      const user = localStorage.getItem("userId");
+      const newTask = {
+        title: taskInput,
+        description: description,
+        priority: priority,
+        deadline: selectedDate,
+        category: "To Do", // Or any default category you want to set
+        user: user,
+      };
+
+      // Assuming `addTask` is available in the context, call it to add the task
+      await addTask(newTask);
+
+      // Show the success popup
+      setIsPopupVisible(true);
+
+      // Reset task form fields
+      handleTaskReset();
+       setTimeout(() => {
+        setIsPopupVisible(false);
+      }, 3000);
+      toggleModal(event);
+    } else {
+      alert("Please fill in all fields.");
+    }
+  };
+
   const userId = localStorage.getItem("userId");
   console.log(userId);
   console.log("In home : " + tasks);
@@ -114,7 +165,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="filter-box">
+        {/* <div className="filter-box">
           <div className="filter-frame">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +197,49 @@ const Home = () => {
               <path d="m6 9 6 6 6-6" />
             </svg>
           </div>
-        </div>
+        </div> */}
+        <div className="filter-box">
+      <div className="filter-frame">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="lucide lucide-filter"
+        >
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+        </svg>
+        <span className="filter-text">Filter</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="lucide lucide-chevron-down"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+
+      {/* Dropdown Menu for Filter Options */}
+      <div className="filter-dropdown">
+        <ul>
+          <li onClick={() => handleNavigate('/todo')}>To Do</li>
+          <li onClick={() => handleNavigate('/onprogress')}>On Progress</li>
+          <li onClick={() => handleNavigate('/done')}>Done</li>
+        </ul>
+      </div>
+    </div>
       </div>
       {isPopupVisible && (
         <div
@@ -224,7 +317,7 @@ const Home = () => {
                 <div>
                   <h1>Expired Task</h1>
                   <h1>
-                    <center>5</center>
+                    <center>{overdueCount}</center>
                   </h1>
                 </div>
               </div>
@@ -245,7 +338,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h1>All Active Task</h1>
-                  <h1>5</h1>
+                  <h1>{activeCount}</h1>
                 </div>
               </div>
             </div>
@@ -266,11 +359,12 @@ const Home = () => {
                 </div>
                 <div>
                   <h1>Completed Task</h1>
-                  <h1>5</h1>
+                  <h1>{completedCount}</h1>
                 </div>
               </div>
             </div>
           </div>
+          <br></br>
           <div
             id="_1_1563_Component_23"
             onClick={(e) => {
@@ -281,7 +375,7 @@ const Home = () => {
               position: "relative",
               background: "rgba(13, 6, 45, 1.00)",
               borderRadius: "19px",
-              height: "36px",
+              height: "60px",
               width: "auto",
               display: "flex",
               flexDirection: "row",
@@ -296,10 +390,9 @@ const Home = () => {
             <div
               id="_1_1564_icons"
               style={{
+                paddingRight: "10px",
                 position: "relative",
                 overflow: "hidden",
-                height: "14px",
-                width: "14px",
               }}
             >
               <svg
@@ -310,7 +403,7 @@ const Home = () => {
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 viewBox="0 0 512 512"
-                style={{ width: "12px", height: "12px" }}
+                style={{ width: "40", height: "40" }}
               >
                 <path
                   fill="#fff"
@@ -323,14 +416,16 @@ const Home = () => {
             <span
               id="Add_Task"
               style={{
+                // fontFamily:
+                paddingRight: "10px",
                 color: "#ffffff",
                 fontFamily: "Poppins",
-                fontSize: "14px",
+                fontSize: "20px",
                 fontWeight: "500",
                 lineHeight: "18px",
                 textAlign: "left",
                 height: "18px",
-                width: "65px",
+                width: "100px",
                 position: "relative",
               }}
             >
@@ -369,9 +464,7 @@ const Home = () => {
               <h3>Add Task</h3>
 
               {/* Task Title Input */}
-              <label
-              style={{fontSize:'25px'}}
-              >Task Title</label>
+              <label style={{ fontSize: "25px" }}>Task Title</label>
               <input
                 type="text"
                 value={taskInput}
@@ -384,12 +477,11 @@ const Home = () => {
                   border: "1px solid #ccc",
                   marginBottom: "10px",
                 }}
-              /><br></br>
+              />
+              <br></br>
 
               {/* Task Description Input */}
-              <label
-              style={{fontSize:'25px'}}
-              >Task Description</label>
+              <label style={{ fontSize: "25px" }}>Task Description</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -400,10 +492,11 @@ const Home = () => {
                   borderRadius: "4px",
                   border: "1px solid #ccc",
                   marginBottom: "10px",
-                  height: "150px", 
-                  resize: "vertical", 
+                  height: "150px",
+                  resize: "vertical",
                 }}
-              /><br></br>
+              />
+              <br></br>
 
               {/* Priority Input */}
               <label>Priority</label>
@@ -418,8 +511,10 @@ const Home = () => {
                   marginBottom: "10px",
                 }}
               >
+                <option value="Select Priority" disabled>
+                  Select Priority
+                </option>
                 <option value="High">High</option>
-                <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
               </select>
 
@@ -452,7 +547,7 @@ const Home = () => {
                 </button>
                 <button
                   className="save"
-                  onClick={handleAddTask}
+                  onClick={(e) => handleAddTask(e)} // Pass the event to the function
                   style={{
                     backgroundColor: "black",
                     color: "white",

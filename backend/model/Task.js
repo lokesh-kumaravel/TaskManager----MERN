@@ -14,7 +14,7 @@ const TaskSchema = new mongoose.Schema(
       enum: ["Low", "High", "Completed"],
       default: "Low",
     },
-    duration: { type: Number, required: true },
+    // duration: { type: Number, required: true },
     status: {
       type: String,
       enum: ["Active", "Timed Out"],
