@@ -7,7 +7,6 @@ require("dotenv").config();
 
 const router = express.Router();
 
-// Add new task
 router.post("/add", async (req, res) => {
     console.log("Received request body:", req.body);  // Log request body to verify
   
@@ -32,7 +31,7 @@ router.post("/add", async (req, res) => {
   });
   
 router.post('/get', async (req, res) => {
-    const { userId } = req.body; // Access userId from the body
+    const { userId } = req.body; 
   
     console.log("Received userId: ", userId);
   
@@ -41,9 +40,9 @@ router.post('/get', async (req, res) => {
     }
   
     try {
-      const tasks = await Task.find({ user: userId }); // Find tasks based on userId
+      const tasks = await Task.find({ user: userId }); 
       console.log("Fetched tasks: ", tasks);
-      res.json({ tasks }); // Send tasks as a response
+      res.json({ tasks }); 
     } catch (error) {
       res.status(500).json({ message: 'Error fetching tasks', error });
     }
@@ -55,14 +54,10 @@ router.post('/get', async (req, res) => {
   
       console.log("Updating task with ID: ", taskId);
   
-      // Basic validation for required fields
       if (!updatedData.title || !updatedData.description) {
         return res.status(400).json({ message: "Title and description are required." });
       }
   
-      // Optionally, sanitize input data here if needed
-  
-      // Find the task by ID and update it
       const updatedTask = await Task.findByIdAndUpdate(taskId, updatedData, { new: true });
   
       if (!updatedTask) {
@@ -71,10 +66,9 @@ router.post('/get', async (req, res) => {
   
       console.log("Updated task: ", updatedTask);
   
-      // Send back the updated task
       res.status(200).json(updatedTask);
     } catch (error) {
-      console.error("Error updating task:", error.message); // Log the actual error message
+      console.error("Error updating task:", error.message);
       res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
   });
@@ -82,7 +76,6 @@ router.post('/get', async (req, res) => {
     const taskId = req.params.id;
   
     try {
-      // Find and delete the task by ID
       const deletedTask = await Task.findByIdAndDelete(taskId);
   
       if (!deletedTask) {
@@ -98,12 +91,9 @@ router.post('/get', async (req, res) => {
   
   router.patch('/:id/status', async (req, res) => {
     const taskId = req.params.id;
-    const { status } = req.body; // Expecting the new status to be sent in the request body
-  
-    let priority = ''; // Default priority
-  
+    const { status } = req.body;
+    let priority = ''; 
     try {
-      // Determine the priority based on the status
       if (status === 'Completed') {
         priority = 'Completed';
       } else if (status === 'In Progress') {
@@ -115,23 +105,20 @@ router.post('/get', async (req, res) => {
         return res.status(400).json({ message: "Invalid status provided" });
       }
   
-      // Find task by ID and update its status and priority
       const updatedTask = await Task.findByIdAndUpdate(
         taskId,
         { 
           status: status, 
-          priority: priority, // Set the priority based on the status
-          category: status // You can keep category same as status, or handle it differently
+          priority: priority, 
+          category: status 
         },
-        { new: true } // Return the updated task
+        { new: true } 
       );
       console.log(updatedTask)
-      // If task not found
       if (!updatedTask) {
         return res.status(404).json({ message: "Task not found" });
       }
   
-      // Return success response with the updated task
       res.status(200).json({ message: "Task status updated", task: updatedTask });
     } catch (error) {
       console.error("Error updating task status:", error);
@@ -139,28 +126,4 @@ router.post('/get', async (req, res) => {
     }
   });
   
-  // router.patch('/:id/status', async (req, res) => {
-  //   const taskId = req.params.id;
-  //   const { status } = req.body; // Expecting the new status to be sent in the request body
-  // console.log(status)
-  //   try {
-  //     // Find task by ID and update its status
-  //     const updatedTask = await Task.findByIdAndUpdate(
-  //       taskId,
-  //       { status: status, category: status  }, // Update the status field
-  //       { new: true } // Return the updated task
-  //     );
-  // console.log(updatedTask)
-  //     if (!updatedTask) {
-  //       return res.status(404).json({ message: "Task not found" });
-  //     }
-  
-  //     res.status(200).json({ message: "Task status updated", task: updatedTask });
-  //   } catch (error) {
-  //     console.error("Error updating task status:", error);
-  //     res.status(500).json({ message: "Server error", error: error.message });
-  //   }
-  // });
-  
-
 module.exports = router;

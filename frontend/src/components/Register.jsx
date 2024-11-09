@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Use useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom'; 
 import { baseURL } from '../config';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate here
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -32,10 +32,10 @@ const Register = () => {
         const data = await response.json();
         console.log("Registration successful:", data);
         alert("Registration successful!");
+        navigate('/login')
       } else {
         const errorData = await response.json();
         alert(`Registration failed: ${errorData.message}`);
-        navigate('/')
         console.error("Registration error:", errorData);
       }
     } catch (error) {
@@ -184,7 +184,7 @@ const Register = () => {
               color: '#007BFF', 
               cursor: 'pointer' 
             }}
-            onClick={() => navigate('/')}  // Use navigate() instead of history.push()
+            onClick={() => navigate('/')}  
           >
             Login here
           </button>

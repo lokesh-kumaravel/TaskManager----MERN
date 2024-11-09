@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { baseURL } from "../config";
 
 const Login = () => {
-  const [email, setEmail] = useState("lokeshkumaravel29@gmail.com");
-  const [password, setPassword] = useState("111");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {

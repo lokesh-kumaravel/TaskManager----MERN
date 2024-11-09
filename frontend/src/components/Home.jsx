@@ -15,7 +15,7 @@ import Done from "./Done";
 const Home = () => {
   const [description, setDescription] = useState("");
   const handleNavigate = (path) => {
-    navigate(path); // Navigate to the specified path
+    navigate(path);
   };
   const {
     tasks,
@@ -31,15 +31,7 @@ const Home = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [taskInput, setTaskInput] = useState("");
   const handleAddTask = async (event) => {
-    event.preventDefault(); // Prevent the form from submitting or the default action
-
-    // Debugging: log the values to see if they are correct
-    // console.log("Task Title:", taskInput);
-    // console.log("Description:", description);
-    // console.log("Priority:", priority);
-    // console.log("Selected Date:", selectedDate);
-
-    // Check if all necessary fields are filled
+    event.preventDefault(); 
     if (
       taskInput &&
       description &&
@@ -48,24 +40,20 @@ const Home = () => {
     ) {
       console.log("All fields are valid. Proceeding with task creation.");
 
-      // Create the new task object
       const user = localStorage.getItem("userId");
       const newTask = {
         title: taskInput,
         description: description,
         priority: priority,
         deadline: selectedDate,
-        category: "To Do", // Or any default category you want to set
+        category: "To Do", 
         user: user,
       };
 
-      // Assuming `addTask` is available in the context, call it to add the task
       await addTask(newTask);
 
-      // Show the success popup
       setIsPopupVisible(true);
 
-      // Reset task form fields
       handleTaskReset();
        setTimeout(() => {
         setIsPopupVisible(false);
@@ -573,3 +561,5 @@ const Home = () => {
 };
 
 export default Home;
+
+// I have completed the TaskManager App using the MERN stack how can i deploy by front end using vercel the backend using the Heroku iam the deginner of deploying the fullstack application which should i deploy first frontend or backend i have both in the folder of TaskManager in the github

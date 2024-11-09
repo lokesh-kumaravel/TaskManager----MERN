@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import { CommonProvider } from "./components/CommonContext.jsx";
-// import Todo from "./components/Todo.jsx";
 import Register from "./components/Register.jsx";
 import Todo from "./components/Todo.jsx";
 import OnProgress from "./components/OnProgress.jsx";
