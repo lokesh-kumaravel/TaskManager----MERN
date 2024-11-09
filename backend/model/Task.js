@@ -9,12 +9,18 @@ const TaskSchema = new mongoose.Schema(
       enum: ["To Do", "In Progress", "Done", "Timeout"],
       default: "To Do",
     },
+    priority: {
+      type: String,
+      enum: ["Low", "High", "Completed"],
+      default: "Low",
+    },
     duration: { type: Number, required: true },
     status: {
       type: String,
       enum: ["Active", "Timed Out"],
       default: "Active",
     },
+    deadline: { type: Date, required: false },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   },
   {

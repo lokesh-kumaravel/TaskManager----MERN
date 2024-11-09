@@ -24,33 +24,49 @@
 } */
 
 /* Style for individual blocks inside image-column-item */
-.block-1,
+/* .block-1,
 .block-2,
 .block-3 {
   height: 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
+  align-items: start;
+  justify-content: start;
+  gap: 5px; 
+  text-align: start;  
+  /* padding: 10px; */
+/* border: 1px solid #ddd; 
+    background-color: #f9f9f9; */
+/* border-radius: 8px;  */
+/* } */
+*/
 
-.block-1 img,
+/* .block-1 img,
 .block-2 img,
 .block-3 img {
-  width: 100%;
-  max-width: 250px; /* Adjust max-width based on your design */
-  height: auto;
-}
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px; 
+} */
 
-.block-1 p,
+
+
+/* .block-1 p,
 .block-2 p,
 .block-3 p {
-  text-align: center;
-  font-size: 14px;
-  color: #5a5a5a;
-  line-height: 1.5;
+  margin: 0;
+  font-size: 14px; 
+  color: #333;
 }
+
+.block-1 h1,
+.block-2 h1,
+.block-3 h1 {
+  margin: 0;
+  font-size: 20px; 
+  color: #333; 
+} */
 
 .search-text {
   color: #5a5a5a;
@@ -229,19 +245,30 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: start;
+  align-items: start;
   flex-wrap: wrap;
   column-gap: 9px;
   row-gap: 19px;
   padding: 20px 0;
 }
+
 .image-column-items {
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 3%;
+  background-color: white;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+/* .image-column-items {
   position: relative;
   background: rgb(255, 255, 255);
   border-radius: 10px;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  width: 100%; /* Takes up full width of the column */
+  width: 100%; 
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -250,7 +277,7 @@
   column-gap: 9px;
   row-gap: 19px;
   padding: 20px 0;
-}
+} */
 
 @media (max-width: 768px) {
   .image-grid {
