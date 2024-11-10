@@ -8,9 +8,6 @@ require("dotenv").config();
 const router = express.Router();
 
 router.post("/add", async (req, res) => {
-  console.log("Hello")
-    console.log("Received request body:", req.body);  // Log request body to verify
-  
     const { title, description, category,  status, user, priority, deadline } = req.body;
   
     try {

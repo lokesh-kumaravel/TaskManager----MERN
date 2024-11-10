@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useCommonContext } from "./CommonContext";
 import Low from "../assets/low.png";
 import High from "../assets/high.png";
@@ -10,13 +10,24 @@ const OnProgress = () => {
     const formattedDate = new Date(date).toLocaleDateString('en-GB', options); 
     return formattedDate;
   };
+  const { tasks, setTask, deleteTask, updateTaskStatus, loading } = useCommonContext(); 
+  const [Onprogress, setOnProgress] = useState(
+    tasks.filter(
+      (task) => task.category === "To Do" && task.priority !== "Completed"
+    ).length
+  );
+  useEffect(() => {
+    const todoCount = tasks.filter(
+      (task) => ((task.category === "In Progress" && task.priority !== "Completed")||( task.status=="In rogress"))
+    ).length;
+    setOnProgress(todoCount);
+  }, [tasks]);
 
   const [showDropdownForTask, setShowDropdownForTask] = useState(null); 
   const [taskStatus, setTaskStatus] = useState({}); 
   const [isEditing, setIsEditing] = useState(null); 
   const [editTaskData, setEditTaskData] = useState({});
 
-  const { tasks, setTask, deleteTask, updateTaskStatus, loading } = useCommonContext(); 
   const handleDropdownToggle = (taskId) => {
     setShowDropdownForTask((prev) => (prev === taskId ? null : taskId));
   };
@@ -54,7 +65,6 @@ const OnProgress = () => {
   return (
     <>{(!loading&&
     <div className="outer-div">
-      {/* <h3 style={{ textAlign: "center" }}>On Progress</h3> */}
       <div
         style={{
           display: "flex",
@@ -71,21 +81,32 @@ const OnProgress = () => {
             marginRight: "8px",
           }}
         ></div>
-        <h3
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "18px",
-            fontStyle: "normal",
-          }}
-        >
-          On Progress
-        </h3>
+        <p
+              style={{
+                fontWeight:'500',
+                fontFamily: "Inter, sans-serif",
+                fontSize: "19px",
+                fontStyle: "normal",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
+                <span>On Progress</span>
+                <span style={{fontFamily:'Inter, sans-serif'}} >{Onprogress}</span>
+              </div>
+            </p>
       </div>
       <hr
         style={{
           border: "none",
           borderTop: "5px solid #FFA500",
-          margin: "20px 0",
+          margin: "2px 0",
+          paddingBottom:'5%'
         }}
       />
       <div className="image-column">
@@ -235,7 +256,7 @@ const OnProgress = () => {
                           paddingLeft: "20px",
                           fontSize: "20px",
                           fontStyle: "normal",
-                          fontFamily: "'Inter', sans-serif", // Added font-family here
+                          fontFamily: "'Inter', sans-serif",
                         }}
                       >
                         {task.title}
@@ -257,10 +278,28 @@ const OnProgress = () => {
                       </p>
 
                       {task.deadline && (
-                        <div style={{ paddingLeft: "20px", marginTop: "10px", fontSize: "16px",paddingBottom:'15px' }}>
-                          <strong>Deadline:</strong> {formatDate(task.deadline)}
-                        </div>
-                      )}
+                            <div
+                              style={{
+                                paddingLeft: "20px",
+                                marginTop: "10px",
+                                fontSize: "16px",
+                                paddingBottom: "15px",
+                              }}
+                            >
+                              <div 
+                              style={{
+                                fontFamily: "Poppins, sans-serif",
+                                fontWeight: "1000",
+                                lineHeight: "42px",
+                                letterSpacing: "0.01em",
+                                textAlign: "left",
+                                textUnderlinePosition: "from-font",
+                                textDecorationSkipInk: "none",
+                              }}
+                              >Deadline:{" "}{formatDate(task.deadline)}</div>
+                              
+                            </div>
+                          )}
                     </div>
                   )}
                 </div>

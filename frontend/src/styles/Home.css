@@ -99,6 +99,7 @@
 }
 
 .filter-frame {
+  color: grey;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -195,7 +196,7 @@
 .image-column-item {
   position: relative;
   background: rgba(236, 236, 238, 1);
-  border-radius: 10px;
+  border-radius: 14px;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   width: 100%;
   display: flex;
