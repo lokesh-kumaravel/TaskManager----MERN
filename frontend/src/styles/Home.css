@@ -1,72 +1,3 @@
-/* .image-column-item {
-  position: relative;
-  background: rgba(236, 236, 238, 1);
-  border-radius: 10px;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  width: 354px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px 0;
-}
-.image-column-items {
-  position: relative;
-  background: rgba(236, 236, 238, 1);
-  border-radius: 10px;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  width: 354px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px 0;
-} */
-
-/* Style for individual blocks inside image-column-item */
-/* .block-1,
-.block-2,
-.block-3 {
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-  gap: 5px; 
-  text-align: start;  
-  /* padding: 10px; */
-/* border: 1px solid #ddd; 
-    background-color: #f9f9f9; */
-/* border-radius: 8px;  */
-/* } */
-*/
-
-/* .block-1 img,
-.block-2 img,
-.block-3 img {
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px; 
-} */
-
-
-
-/* .block-1 p,
-.block-2 p,
-.block-3 p {
-  margin: 0;
-  font-size: 14px; 
-  color: #333;
-}
-
-.block-1 h1,
-.block-2 h1,
-.block-3 h1 {
-  margin: 0;
-  font-size: 20px; 
-  color: #333; 
-} */
 
 .search-text {
   color: #5a5a5a;
@@ -75,19 +6,18 @@
   font-weight: 500;
   opacity: 0.64;
   text-align: left;
-  width: 100%; /* Ensures the input takes full width */
-  height: 32px; /* Adjust height as needed */
-  padding-left: 10px; /* Padding inside the input */
-  border: none; /* Removes the border */
-  outline: none; /* Removes the outline when the input is focused */
-  background-color: transparent; /* Optionally make background transparent if no background */
+  width: 100%;
+  height: 32px; 
+  padding-left: 10px;
+  border: none; 
+  outline: none; 
+  background-color: transparent; 
 }
 
 .search-text::placeholder {
   color: #5a5a5a;
   opacity: 0.64;
 }
-/* Container for the entire home screen */
 .home-container {
   position: absolute;
   overflow: hidden;
@@ -102,7 +32,6 @@
   padding: 50px 21px 18px 21px;
 }
 
-/* Frame that wraps search and filter box */
 .home-frame {
   position: relative;
   background: rgba(236, 237, 238, 1);
@@ -116,8 +45,6 @@
   padding: 20px;
 }
 
-/* Search box container */
-/* Styles for the search box */
 .search-box {
   position: relative;
   background: rgba(255, 255, 255, 1);
@@ -131,7 +58,6 @@
   padding: 10px 12px;
 }
 
-/* Row within the search box */
 .search-row {
   position: relative;
   display: flex;
@@ -139,19 +65,17 @@
   gap: 8px;
 }
 
-/* Search input box */
 .search-text {
-  border: none; /* Remove the default border */
-  outline: none; /* Remove the default outline (focus border) */
-  background: transparent; /* Keep the background transparent */
-  width: 100%; /* Full width of the parent */
+  border: none; 
+  outline: none; 
+  background: transparent; 
+  width: 100%; 
   font-size: 14px;
   padding: 5px;
-  color: #000000; /* Set the text color to dark (or any color you prefer) */
+  color: #000000; 
 }
 
 
-/* Icon inside the search box */
 .search-icon {
   position: relative;
   overflow: hidden;
@@ -170,7 +94,6 @@
   height: 18px;
 }
 
-/* Filter box container */
 .filter-box {
   position: relative;
 }
@@ -188,7 +111,7 @@
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  top: 35px; /* Adjust based on the position */
+  top: 35px; 
   width: 150px;
   z-index: 10;
 }
@@ -213,7 +136,6 @@
   background-color: #f0f0f0;
 }
 
-/* Filter icon and text */
 .filter-icon {
   position: relative;
   height: 16px;
@@ -237,8 +159,6 @@
   width: 16px;
 }
 
-/* Image grid container */
-/* Main image grid container */
 .image-grid {
   position: relative;
   width: 100%;
@@ -249,12 +169,10 @@
   gap: 54px;
   flex-wrap: wrap;
 
-  /* Add vertical scrolling when the content exceeds the viewport */
-  max-height: 100vh; /* Adjust based on the height you want to limit to */
-  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
-/* Image column and item */
 .image-column {
   position: relative;
   display: flex;
@@ -268,8 +186,8 @@
 }
 
 .outer-div {
-  background-color: rgba(236, 236, 238, 1); /* Set the background color */
-  padding: 20px; /* Optional: Add padding if needed */
+  background-color: rgba(236, 236, 238, 1); 
+  padding: 20px;
   border-radius: 10px;
 }
 
@@ -299,53 +217,32 @@
   order: 3;
   flex-grow: 0;
 }
-/* .image-column-items {
-  position: relative;
-  background: rgb(255, 255, 255);
-  border-radius: 10px;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-  width: 100%; 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  column-gap: 9px;
-  row-gap: 19px;
-  padding: 20px 0;
-} */
 
 @media (max-width: 768px) {
   .image-grid {
-    /* flex-direction: column; Stack the image columns vertically on smaller screens */
-    gap: 30px; /* Reduce gap between columns when stacked */
+    gap: 30px; 
     justify-content: center;
     align-items: center;
   }
 
   .image-column {
-    width: 100%; /* Take full width on smaller screens */
+    width: 100%; 
     height: auto;
-    /* Allow height to adjust based on content */
   }
 
   .image-column-item {
-    width: 100%; /* Take full width of the column */
-    padding: 10px; /* Reduce padding to adjust content spacing */
+    width: 100%; 
+    padding: 10px;
   }
   .image-column-items {
-    width: 100%; /* Take full width of the column */
-    padding: 10px; /* Reduce padding to adjust content spacing */
+    width: 100%; 
+    padding: 10px;
   }
 }
 
 @media (min-width: 768px) {
   .image-grid {
-    flex-direction: row; /* Stack the image columns vertically on smaller screens */
-    /* gap: 30px; */
-    /* Reduce gap between columns when stacked */
-    /* justify-content: center; */
-    /* align-items: center; */
+    flex-direction: row; 
   }
 }
 
@@ -358,9 +255,6 @@
   }
 }
 
-/* Add your other styles here as needed */
-
-/* Modal Styles */
 .modal {
   position: fixed;
   top: 0;

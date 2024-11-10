@@ -153,39 +153,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* <div className="filter-box">
-          <div className="filter-frame">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-filter"
-            >
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-            </svg>
-            <span className="filter-text">Filter</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-chevron-down"
-            >
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </div>
-        </div> */}
         <div className="filter-box">
       <div className="filter-frame">
         <svg
@@ -218,8 +185,6 @@ const Home = () => {
           <path d="m6 9 6 6 6-6" />
         </svg>
       </div>
-
-      {/* Dropdown Menu for Filter Options */}
       <div className="filter-dropdown">
         <ul>
           <li onClick={() => handleNavigate('/todo')}>To Do</li>
@@ -451,7 +416,6 @@ const Home = () => {
             >
               <h3>Add Task</h3>
 
-              {/* Task Title Input */}
               <label style={{ fontSize: "25px" }}>Task Title</label>
               <input
                 type="text"
@@ -468,7 +432,6 @@ const Home = () => {
               />
               <br></br>
 
-              {/* Task Description Input */}
               <label style={{ fontSize: "25px" }}>Task Description</label>
               <textarea
                 value={description}
@@ -486,7 +449,6 @@ const Home = () => {
               />
               <br></br>
 
-              {/* Priority Input */}
               <label>Priority</label>
               <select
                 value={priority}
@@ -506,7 +468,6 @@ const Home = () => {
                 <option value="Low">Low</option>
               </select>
 
-              {/* Deadline Date Picker */}
               <label>Deadline</label>
               <div style={{ marginBottom: "10px" }}>
                 <DatePicker
@@ -535,7 +496,7 @@ const Home = () => {
                 </button>
                 <button
                   className="save"
-                  onClick={(e) => handleAddTask(e)} // Pass the event to the function
+                  onClick={(e) => handleAddTask(e)} 
                   style={{
                     backgroundColor: "black",
                     color: "white",
@@ -561,5 +522,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// I have completed the TaskManager App using the MERN stack how can i deploy by front end using vercel the backend using the Heroku iam the deginner of deploying the fullstack application which should i deploy first frontend or backend i have both in the folder of TaskManager in the github

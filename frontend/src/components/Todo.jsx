@@ -164,7 +164,6 @@ const Todo = () => {
                             zIndex: "1",
                           }}
                         >
-                          {/* Edit Option */}
                           <div
                             style={{
                               padding: "10px",
@@ -176,7 +175,6 @@ const Todo = () => {
                             Edit
                           </div>
 
-                          {/* Status Change Options */}
                           <div
                             style={{
                               padding: "10px",
@@ -202,7 +200,6 @@ const Todo = () => {
                             Completed
                           </div>
 
-                          {/* Delete Option */}
                           <div
                             style={{
                               padding: "10px",

@@ -1,29 +1,28 @@
 .container {
-    max-width: 350px; /* Mobile width */
+    max-width: 350px; 
     background: #F8F9FD;
     border-radius: 40px;
     height: 600px;
     padding: 25px 20px;
     border: 5px solid rgb(255, 255, 255);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
-    /* margin: 20px auto;  */
 }
 
 .heading {
     text-align: center;
     font-weight: 900;
-    font-size: 24px; /* Adjust font size for mobile */
+    font-size: 24px;
     color: rgb(16, 137, 211);
 }
 
 .form {
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
-    width: 100%; /* Full width */
+    flex-direction: column; 
+    width: 100%; 
 }   
 
 .form .input {
-    width: 100%; /* Full width */
+    width: 100%; 
     background: white;
     border: none;
     padding: 15px 20px;
@@ -48,7 +47,7 @@
 .form .forgot-password {
     display: block;
     margin-top: 10px;
-    text-align: right; /* Align right for better visibility */
+    text-align: right; 
 }
 
 .form .forgot-password a {
@@ -99,32 +98,6 @@
     gap: 15px;
     margin-top: 5px;
 }
-
-/* .social-account-container .social-accounts .social-button {
-    background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgb(112, 112, 112) 100%);
-    border: 5px solid white;
-    padding: 5px;
-    border-radius: 50%;
-    width: 40px;
-    aspect-ratio: 1;
-    display: grid;
-    place-content: center;
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 10px -8px;
-    transition: all 0.2s ease-in-out;
-}
-
-.social-account-container .social-accounts .social-button .svg {
-    fill: white;
-    margin: auto;
-}
-
-.social-account-container .social-accounts .social-button:hover {
-    transform: scale(1.2);
-}
-
-.social-account-container .social-accounts .social-button:active {
-    transform: scale(0.9);
-} */
 
 .agreement {
     display: block;

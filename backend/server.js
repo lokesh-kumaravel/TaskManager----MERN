@@ -8,14 +8,13 @@ require('./config/DB');
 const app = express();
 const PORT = process.env.PORT;
 
-// Enable CORS for all origins
 const corsOptions = {
-  origin: '*', // This will allow all domains to access the API
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers like Content-Type and Authorization
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-app.use(cors(corsOptions)); // Apply CORS globally with the defined options
+app.use(cors(corsOptions));
 app.use(express.json()); 
 
 // Your routes
