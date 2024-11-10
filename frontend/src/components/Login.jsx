@@ -16,6 +16,7 @@ const Login = () => {
         password,
       };
 
+      console.log(requestBody)
       const response = await fetch(`${baseURL}/api/login`, {
         method: "POST",
         headers: {
