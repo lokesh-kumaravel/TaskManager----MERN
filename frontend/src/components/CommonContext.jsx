@@ -114,7 +114,6 @@ export const CommonProvider = ({ children }) => {
 
     try {
       const response = await axios.patch(`${baseURL}/task/${taskId}/status`, { status: newStatus });
-      console.log("This is the response : "+response)
       if (response.data && response.data.task) {
         setTasks((prevTasks) =>
           prevTasks.map((task) =>

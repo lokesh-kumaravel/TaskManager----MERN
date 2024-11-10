@@ -3,7 +3,7 @@ import { useCommonContext } from "./CommonContext";
 import Low from "../assets/low.png";
 import High from "../assets/high.png";
 import Completed from "../assets/complete.png";
-
+import "typeface-inter";
 const Done = () => {
   const formatDate = (date) => {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -16,7 +16,7 @@ const Done = () => {
   const [isEditing, setIsEditing] = useState(null); 
   const [editTaskData, setEditTaskData] = useState({});
 
-  const { tasks, setTask, deleteTask, updateTaskStatus } = useCommonContext(); 
+  const { tasks, setTask, deleteTask, updateTaskStatus, loading } = useCommonContext(); 
   const handleDropdownToggle = (taskId) => {
     setShowDropdownForTask((prev) => (prev === taskId ? null : taskId));
   };
@@ -54,12 +54,39 @@ const Done = () => {
   };
 
   return (
+    <>{(!loading&&
     <div className="outer-div">
-      <h3 style={{ textAlign: "center" }}>Completed Progress</h3>
+      {/* <h3 style={{ textAlign: "center" }}>Completed Progress</h3> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: "8px",
+            height: "8px",
+            backgroundColor: "#8BC48A",
+            borderRadius: "50%",
+            marginRight: "8px",
+          }}
+        ></div>
+        <h3
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "18px",
+            fontStyle: "normal",
+          }}
+        >
+          Done
+        </h3>
+      </div>
       <hr
         style={{
           border: "none",
-          borderTop: "5px solid Green",
+          borderTop: "5px solid #8BC48A",
           margin: "20px 0",
         }}
       />
@@ -207,7 +234,14 @@ const Done = () => {
                     </div>
                   ) : (
                     <div>
-                      <h3 style={{ paddingLeft: "20px", fontSize: "18px", fontStyle: "normal" }}>
+                      <h3
+                        style={{
+                          paddingLeft: "20px",
+                          fontSize: "20px",
+                          fontStyle: "normal",
+                          fontFamily: "'Inter', sans-serif", // Added font-family here
+                        }}
+                      >
                         {task.title}
                       </h3>
                       <p
@@ -219,13 +253,15 @@ const Done = () => {
                           fontSize: "17px",
                           lineHeight: "22px",
                           color: "#787486",
+                          textAlign:'justify',
+                          paddingRight:'20px'
                         }}
                       >
                         {task.description}
                       </p>
 
                       {task.deadline && (
-                        <div style={{ paddingLeft: "20px", marginTop: "10px", fontSize: "16px" }}>
+                        <div style={{ paddingLeft: "20px", marginTop: "10px", fontSize: "16px",paddingBottom:'15px' }}>
                           <strong>Deadline:</strong> {formatDate(task.deadline)}
                         </div>
                       )}
@@ -241,6 +277,8 @@ const Done = () => {
         )}
       </div>
     </div>
+    )}
+    </>
   );
 };
 

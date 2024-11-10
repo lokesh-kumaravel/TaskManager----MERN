@@ -3,7 +3,7 @@ import { useCommonContext } from "./CommonContext";
 import Low from "../assets/low.png";
 import High from "../assets/high.png";
 import Completed from "../assets/complete.png";
-
+import "typeface-inter";
 const OnProgress = () => {
   const formatDate = (date) => {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -16,7 +16,7 @@ const OnProgress = () => {
   const [isEditing, setIsEditing] = useState(null); 
   const [editTaskData, setEditTaskData] = useState({});
 
-  const { tasks, setTask, deleteTask, updateTaskStatus } = useCommonContext(); 
+  const { tasks, setTask, deleteTask, updateTaskStatus, loading } = useCommonContext(); 
   const handleDropdownToggle = (taskId) => {
     setShowDropdownForTask((prev) => (prev === taskId ? null : taskId));
   };
@@ -39,7 +39,6 @@ const OnProgress = () => {
       deadline: task.deadline ? task.deadline.split("T")[0] : "", 
     });
   };
-
   const handleEditSubmit = async (taskId) => {
     const updatedTask = {
       title: editTaskData.title,
@@ -53,12 +52,39 @@ const OnProgress = () => {
   };
 
   return (
+    <>{(!loading&&
     <div className="outer-div">
-      <h3 style={{ textAlign: "center" }}>On Progress</h3>
+      {/* <h3 style={{ textAlign: "center" }}>On Progress</h3> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: "8px",
+            height: "8px",
+            backgroundColor: "#FFA500",
+            borderRadius: "50%",
+            marginRight: "8px",
+          }}
+        ></div>
+        <h3
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "18px",
+            fontStyle: "normal",
+          }}
+        >
+          On Progress
+        </h3>
+      </div>
       <hr
         style={{
           border: "none",
-          borderTop: "5px solid orange",
+          borderTop: "5px solid #FFA500",
           margin: "20px 0",
         }}
       />
@@ -204,7 +230,14 @@ const OnProgress = () => {
                     </div>
                   ) : (
                     <div>
-                      <h3 style={{ paddingLeft: "20px", fontSize: "18px", fontStyle: "normal" }}>
+                      <h3
+                        style={{
+                          paddingLeft: "20px",
+                          fontSize: "20px",
+                          fontStyle: "normal",
+                          fontFamily: "'Inter', sans-serif", // Added font-family here
+                        }}
+                      >
                         {task.title}
                       </h3>
                       <p
@@ -216,13 +249,15 @@ const OnProgress = () => {
                           fontSize: "17px",
                           lineHeight: "22px",
                           color: "#787486",
+                          textAlign:'justify',
+                          paddingRight:'20px'
                         }}
                       >
                         {task.description}
                       </p>
 
                       {task.deadline && (
-                        <div style={{ paddingLeft: "20px", marginTop: "10px", fontSize: "16px" }}>
+                        <div style={{ paddingLeft: "20px", marginTop: "10px", fontSize: "16px",paddingBottom:'15px' }}>
                           <strong>Deadline:</strong> {formatDate(task.deadline)}
                         </div>
                       )}
@@ -237,7 +272,8 @@ const OnProgress = () => {
           <p>No tasks available.</p>
         )}
       </div>
-    </div>
+    </div>)}
+    </>
   );
 };
 

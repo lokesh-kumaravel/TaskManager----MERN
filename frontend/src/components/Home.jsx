@@ -31,7 +31,7 @@ const Home = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [taskInput, setTaskInput] = useState("");
   const handleAddTask = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     if (
       taskInput &&
       description &&
@@ -46,7 +46,7 @@ const Home = () => {
         description: description,
         priority: priority,
         deadline: selectedDate,
-        category: "To Do", 
+        category: "To Do",
         user: user,
       };
 
@@ -55,7 +55,7 @@ const Home = () => {
       setIsPopupVisible(true);
 
       handleTaskReset();
-       setTimeout(() => {
+      setTimeout(() => {
         setIsPopupVisible(false);
       }, 3000);
       toggleModal(event);
@@ -124,6 +124,7 @@ const Home = () => {
     navigate("/Calendar");
   };
   return (
+    <>
     <div className="home-container" onClick={handleOutsideClick}>
       <div className="home-frame">
         <div className="search-box">
@@ -154,46 +155,47 @@ const Home = () => {
         </div>
 
         <div className="filter-box">
-      <div className="filter-frame">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          className="lucide lucide-filter"
-        >
-          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-        </svg>
-        <span className="filter-text">Filter</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          className="lucide lucide-chevron-down"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+          <div className="filter-frame">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-filter"
+            >
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+            <span className="filter-text">Filter</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-chevron-down"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <div className="filter-dropdown">
+            <ul>
+              <li onClick={() => handleNavigate("/todo")}>To Do</li>
+              <li onClick={() => handleNavigate("/onprogress")}>On Progress</li>
+              <li onClick={() => handleNavigate("/done")}>Done</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="filter-dropdown">
-        <ul>
-          <li onClick={() => handleNavigate('/todo')}>To Do</li>
-          <li onClick={() => handleNavigate('/onprogress')}>On Progress</li>
-          <li onClick={() => handleNavigate('/done')}>Done</li>
-        </ul>
-      </div>
-    </div>
-      </div>
+
       {isPopupVisible && (
         <div
           style={{
@@ -253,6 +255,7 @@ const Home = () => {
       <div className="image-grid">
         <div className="i"></div>
 
+        {(!loading&&
         <div>
           <div className="image-column">
             <div className="image-column-item">
@@ -269,9 +272,25 @@ const Home = () => {
                 </div>
                 <div>
                   <h1>Expired Task</h1>
-                  <h1>
-                    <center>{overdueCount}</center>
-                  </h1>
+                  <div
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontSize: "28px",
+                      fontWeight: "500",
+                      lineHeight: "42px",
+                      letterSpacing: "0.01em",
+                      textAlign: "left",
+                      textUnderlinePosition: "from-font",
+                      textDecorationSkipInk: "none",
+                    }}
+                  >
+                    {overdueCount}
+                  </div>
+
+                  {/* <h1> */}
+                  {/* <center>{overdueCount}</center> */}
+                  {/* {overdueCount} */}
+                  {/* </h1> */}
                 </div>
               </div>
             </div>
@@ -291,7 +310,21 @@ const Home = () => {
                 </div>
                 <div>
                   <h1>All Active Task</h1>
-                  <h1>{activeCount}</h1>
+                  {/* <h1>{activeCount}</h1> */}
+                  <div
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontSize: "28px",
+                      fontWeight: "500",
+                      lineHeight: "42px",
+                      letterSpacing: "0.01em",
+                      textAlign: "left",
+                      textUnderlinePosition: "from-font",
+                      textDecorationSkipInk: "none",
+                    }}
+                  >
+                    {activeCount}
+                  </div>
                 </div>
               </div>
             </div>
@@ -312,7 +345,21 @@ const Home = () => {
                 </div>
                 <div>
                   <h1>Completed Task</h1>
-                  <h1>{completedCount}</h1>
+                  {/* <h1>{completedCount}</h1> */}
+                  <div
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      fontSize: "28px",
+                      fontWeight: "500",
+                      lineHeight: "42px",
+                      letterSpacing: "0.01em",
+                      textAlign: "left",
+                      textUnderlinePosition: "from-font",
+                      textDecorationSkipInk: "none",
+                    }}
+                  >
+                    {completedCount}
+                  </div>
                 </div>
               </div>
             </div>
@@ -369,7 +416,6 @@ const Home = () => {
             <span
               id="Add_Task"
               style={{
-                // fontFamily:
                 paddingRight: "10px",
                 color: "#ffffff",
                 fontFamily: "Poppins",
@@ -386,6 +432,7 @@ const Home = () => {
             </span>
           </div>
         </div>
+        )}
         {showModal && (
           <div
             className="modal-overlay"
@@ -496,7 +543,7 @@ const Home = () => {
                 </button>
                 <button
                   className="save"
-                  onClick={(e) => handleAddTask(e)} 
+                  onClick={(e) => handleAddTask(e)}
                   style={{
                     backgroundColor: "black",
                     color: "white",
@@ -518,6 +565,7 @@ const Home = () => {
         <Done />
       </div>
     </div>
+    </>
   );
 };
 
