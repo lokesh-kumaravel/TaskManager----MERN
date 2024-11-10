@@ -75,6 +75,7 @@ export const CommonProvider = ({ children }) => {
   };
 
   const addTask = async (taskData) => {
+    console.log(" TaskDA TA"+taskData)
     try {
       setLoading(true);
       setError(null);
@@ -110,6 +111,8 @@ export const CommonProvider = ({ children }) => {
   };
 
   const updateTaskStatus = async (taskId, newStatus) => {
+    console.log(" TaskDA TA"+taskId, newStatus)
+
     try {
       const response = await axios.patch(`${baseURL}/task/${taskId}/status`, { status: newStatus });
       if (response.data && response.data.task) {

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
+    title: { type: String, required: false },
     description: { type: String },
     category: {
       type: String,
@@ -14,17 +14,17 @@ const TaskSchema = new mongoose.Schema(
       enum: ["Low", "High", "Completed"],
       default: "Low",
     },
-     duration: { type: Number, required: true },
+     duration: { type: Number, required: false },
     status: {
       type: String,
       enum: ["Active", "Timed Out"],
       default: "Active",
     },
     deadline: { type: Date, required: false },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false },
   },
   {
-    timestamps: true,
+    timestamps: false,
   }
 );
 

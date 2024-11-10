@@ -8,6 +8,7 @@ require("dotenv").config();
 const router = express.Router();
 
 router.post("/add", async (req, res) => {
+  console.log("Hello")
     console.log("Received request body:", req.body);  // Log request body to verify
   
     const { title, description, category,  status, user, priority, deadline } = req.body;
@@ -22,7 +23,7 @@ router.post("/add", async (req, res) => {
         priority,
          deadline
       });
-
+      console.log("New Task added : "+newTask)
       await newTask.save();
       res.status(201).json({ task: newTask });
     } catch (error) {
@@ -92,6 +93,7 @@ router.post('/get', async (req, res) => {
   router.patch('/:id/status', async (req, res) => {
     const taskId = req.params.id;
     const { status } = req.body;
+    console.log(status)
     let priority = ''; 
     try {
       if (status === 'Completed') {
