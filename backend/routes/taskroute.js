@@ -91,8 +91,10 @@ router.post('/get', async (req, res) => {
   });
   
   router.patch('/:id/status', async (req, res) => {
+    console.log(req)
     const taskId = req.params.id;
     const { status } = req.body;
+    console.log("status")
     console.log(status)
     let priority = ''; 
     try {

@@ -94,7 +94,6 @@ export const CommonProvider = ({ children }) => {
       setLoading(true);
       setError(null);
       const response = await axios.put(`${baseURL}/task/update/${taskId}`, updatedTaskData);
-      
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task._id === taskId ? { ...task, ...updatedTaskData } : task
@@ -111,10 +110,11 @@ export const CommonProvider = ({ children }) => {
   };
 
   const updateTaskStatus = async (taskId, newStatus) => {
-    console.log(" TaskDA TA"+taskId, newStatus)
+    console.log(" Task in update status : "+taskId, newStatus)
 
     try {
       const response = await axios.patch(`${baseURL}/task/${taskId}/status`, { status: newStatus });
+      console.log("This is the response : "+response)
       if (response.data && response.data.task) {
         setTasks((prevTasks) =>
           prevTasks.map((task) =>
