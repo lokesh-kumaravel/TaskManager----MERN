@@ -1,1 +1,1 @@
-export const baseURL = "https://api-9smurdn97-lokesh-kumaravels-projects.vercel.app";
+export const baseURL = "https://api-mocha-beta.vercel.app";
