@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { baseURL } from "../config";
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
         password,
       };
 
-      console.log(requestBody)
+      console.log(requestBody);
       const response = await fetch(`${baseURL}/api/login`, {
         method: "POST",
         headers: {
@@ -27,10 +27,10 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("userId",data.user.id)
+        localStorage.setItem("userId", data.user.id);
         console.log("Login successful UserId:", data.user);
         alert("Login successful!");
-        navigate("/home")
+        navigate("/home");
       } else {
         const errorData = await response.json();
         alert(`Login failed: ${errorData.message}`);
@@ -154,7 +154,7 @@ const Login = () => {
               color: "#007BFF",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/register")} 
+            onClick={() => navigate("/register")}
           >
             Register here
           </button>
