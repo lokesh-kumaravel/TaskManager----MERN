@@ -155,53 +155,53 @@ const Home = () => {
           </div>
 
           <button
-          style={{
-            borderColor:'#000000',
-            backgroundColor:'white',
-          }}
+            style={{
+              borderColor: "#000000",
+              backgroundColor: "white",
+            }}
           >
-          <div className="filter-box">
-            <div className="filter-frame">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-filter"
-              >
-                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-              </svg>
-              <span className="filter-text">Filter</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-chevron-down"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
+            <div className="filter-box">
+              <div className="filter-frame">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-filter"
+                >
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                </svg>
+                <span className="filter-text">Filter</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-chevron-down"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+              <div className="filter-dropdown">
+                <ul>
+                  <li onClick={() => handleNavigate("/todo")}>To Do</li>
+                  <li onClick={() => handleNavigate("/onprogress")}>
+                    On Progress
+                  </li>
+                  <li onClick={() => handleNavigate("/done")}>Done</li>
+                </ul>
+              </div>
             </div>
-            <div className="filter-dropdown">
-              <ul>
-                <li onClick={() => handleNavigate("/todo")}>To Do</li>
-                <li onClick={() => handleNavigate("/onprogress")}>
-                  On Progress
-                </li>
-                <li onClick={() => handleNavigate("/done")}>Done</li>
-              </ul>
-            </div>
-          </div>
           </button>
         </div>
 
@@ -265,39 +265,33 @@ const Home = () => {
           <div className="i"></div>
 
           {!loading && (
-            <div>
+            <div className="mobile">
               <div className="image-column">
                 <div className="image-column-item">
-                  <div
-                    style={{
-                      paddingLeft: "5%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "start",
-                    }}
-                  >
+                  <div className="content">
                     <div className="block-1">
-                      <img
-                        src={expiredImage}
-                      ></img>
-                    </div>
-                    <div>
+                      <img className="block-1" src={expiredImage}></img>
                       <h1
-                      style={{
-                        fontSize: '25px',
-                        fontWeight:'100',
-                        fontFamily: "Poppins",
-                        textDecorationSkipInk: "none",
-                        color:'grey'
-                      }}
-                      >Expired Task</h1>
+                        style={{
+                          paddingLeft: "20px",
+                          fontSize: "20px",
+                          fontWeight: "100",
+                          fontFamily: "Poppins",
+                          textDecorationSkipInk: "none",
+                          color: "grey",
+                        }}
+                      >
+                        Expired Task
+                      </h1>
                       <div
                         style={{
+                          paddingLeft: "20px",
                           fontFamily: "Poppins, sans-serif",
                           fontSize: "30px",
                           fontWeight: "500",
-                          lineHeight: "42px",
-                          letterSpacing: "0.01em",
+                          // lineHeight: "42px",
+                          paddingTop: "15px",
+                          letterSpacing: "1em",
                           textAlign: "left",
                           textUnderlinePosition: "from-font",
                           textDecorationSkipInk: "none",
@@ -305,41 +299,34 @@ const Home = () => {
                       >
                         {overdueCount}
                       </div>
-
                     </div>
                   </div>
                 </div>
                 <div className="image-column-item">
-                  <div
-                    style={{
-                      paddingLeft: "5%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "start",
-                      justifyContent: "center",
-                      textAlign: "center",
-                    }}
-                  >
+                  <div className="content">
                     <div className="block-1">
-                      <img src={Active}></img>
-                    </div>
-                    <div>
+                      <img className="block-1" src={Active}></img>
                       <h1
-                      style={{
-                        fontSize: '25px',
-                        fontWeight:'100',
-                        fontFamily: "Poppins",
-                        textDecorationSkipInk: "none",
-                        color:'grey'
-                      }}
-                      >All Active Task</h1>
+                        style={{
+                          paddingLeft: "20px",
+                          fontSize: "20px",
+                          fontWeight: "100",
+                          fontFamily: "Poppins",
+                          textDecorationSkipInk: "none",
+                          color: "grey",
+                        }}
+                      >
+                        Active Task
+                      </h1>
                       <div
                         style={{
+                          paddingLeft: "30px",
                           fontFamily: "Poppins, sans-serif",
-                          fontSize: "28px",
+                          fontSize: "30px",
                           fontWeight: "500",
-                          lineHeight: "42px",
-                          letterSpacing: "0.01em",
+                          // lineHeight: "42px",
+                          paddingTop: "15px",
+                          letterSpacing: "1em",
                           textAlign: "left",
                           textUnderlinePosition: "from-font",
                           textDecorationSkipInk: "none",
@@ -351,59 +338,67 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="image-column-item">
-                  <div
-                    style={{
-                      paddingLeft: "10%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "start",
-                      justifyContent: "center",
-                      textAlign: "center",
-                      padding: "20px",
-                    }}
-                  >
+                  <div className="content">
                     <div className="block-1">
-                      <img src={Completed}></img>
-                    </div>
-                    <h1
-                    style={{
-                      fontSize: '25px',
-                      fontWeight:'100',
-                      fontFamily: "Poppins",
-                      textDecorationSkipInk: "none",
-                      color:'grey'
-                    }}
-                    >Completed Task</h1>
-                    <div>
-                      <div style={{ display: "flex" }}>
-                        <div
-                          style={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontSize: "28px",
-                            fontWeight: "500",
-                            lineHeight: "42px",
-                            letterSpacing: "0.01em",
-                            textAlign: "left",
-                            textUnderlinePosition: "from-font",
-                            textDecorationSkipInk: "none",
-                          }}
-                        >
-                          {completedCount}/
-                        </div>
-                        <div
-                          style={{
-                            paddingTop: "2px",
-                            fontFamily: "Poppins, sans-serif",
-                            fontSize: "21px",
-                            fontWeight: "500",
-                            lineHeight: "42px",
-                            letterSpacing: "0.01em",
-                            textAlign: "left",
-                            textUnderlinePosition: "from-font",
-                            textDecorationSkipInk: "none",
-                          }}
-                        >
-                          {tasks.length}{" "}
+                      <img className="block-1" src={Completed}></img>
+                      <h1
+                        style={{
+                          paddingLeft: "20px",
+                          fontSize: "20px",
+                          fontWeight: "100",
+                          fontFamily: "Poppins",
+                          textDecorationSkipInk: "none",
+                          color: "grey",
+                        }}
+                      >
+                        Completed Task
+                      </h1>
+                      <div
+                        style={{
+                          paddingLeft: "10px",
+                          fontFamily: "Poppins, sans-serif",
+                          fontSize: "30px",
+                          fontWeight: "500",
+                          // lineHeight: "42px",
+                          paddingTop: "15px",
+                          letterSpacing: "1em",
+                          textAlign: "left",
+                          textUnderlinePosition: "from-font",
+                          textDecorationSkipInk: "none",
+                        }}
+                      >
+                        <div>
+                          <div style={{ display: "flex" }}>
+                            <div
+                              style={{
+                                fontFamily: "Poppins, sans-serif",
+                                fontSize: "28px",
+                                fontWeight: "500",
+                                lineHeight: "42px",
+                                letterSpacing: "0.01em",
+                                textAlign: "left",
+                                textUnderlinePosition: "from-font",
+                                textDecorationSkipInk: "none",
+                              }}
+                            >
+                              {completedCount}/
+                            </div>
+                            <div
+                              style={{
+                                paddingTop: "2px",
+                                fontFamily: "Poppins, sans-serif",
+                                fontSize: "21px",
+                                fontWeight: "500",
+                                lineHeight: "42px",
+                                letterSpacing: "0.01em",
+                                textAlign: "left",
+                                textUnderlinePosition: "from-font",
+                                textDecorationSkipInk: "none",
+                              }}
+                            >
+                              {tasks.length}{" "}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -412,7 +407,6 @@ const Home = () => {
               </div>
               <br></br>
               <div
-                id="_1_1563_Component_23"
                 onClick={(e) => {
                   e.stopPropagation();
                   toggleModal(e);
@@ -434,7 +428,6 @@ const Home = () => {
                 }}
               >
                 <div
-                  id="_1_1564_icons"
                   style={{
                     paddingRight: "10px",
                     position: "relative",
@@ -616,3 +609,39 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <div>
+  <div style={{ display: "flex" }}>
+    <div
+      style={{
+        fontFamily: "Poppins, sans-serif",
+        fontSize: "28px",
+        fontWeight: "500",
+        lineHeight: "42px",
+        letterSpacing: "0.01em",
+        textAlign: "left",
+        textUnderlinePosition: "from-font",
+        textDecorationSkipInk: "none",
+      }}
+    >
+      {completedCount}/
+    </div>
+    <div
+      style={{
+        paddingTop: "2px",
+        fontFamily: "Poppins, sans-serif",
+        fontSize: "21px",
+        fontWeight: "500",
+        lineHeight: "42px",
+        letterSpacing: "0.01em",
+        textAlign: "left",
+        textUnderlinePosition: "from-font",
+        textDecorationSkipInk: "none",
+      }}
+    >
+      {tasks.length}{" "}
+    </div>
+  </div>
+</div>; */
+}
